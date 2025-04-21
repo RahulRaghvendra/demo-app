@@ -14,11 +14,11 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->string('user_name', 255);
-            $table->string('email')->unique()->nullable();
+            $table->string('email')->unique();
             $table->string('phone_number', 20)->nullable();
             $table->string('type', 50);
             $table->unsignedBigInteger('designation_id');
-            $table->integer('status');
+            $table->integer('status')->default(1);
             $table->text('image')->nullable();
             $table->string('password');
             $table->rememberToken(); // adds nullable varchar(100)

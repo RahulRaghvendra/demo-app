@@ -64,3 +64,121 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+# Task Management System
+
+A Laravel-based Task Management System with user authentication, role-based access, CRUD operations for tasks, and document upload functionality.
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- PHP >= 8.0
+- Composer
+- Laravel >= 9.x
+- MySQL or any compatible database
+- Node.js and NPM (for frontend assets if needed)
+
+### Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/your-username/demo-app.git
+cd demo-app
+```
+
+2. Install dependencies:
+
+```bash
+composer install
+npm install && npm run dev
+```
+
+3. Copy the example environment file and configure your environment:
+
+```bash
+cp .env.example .env
+php artisan key:generate
+```
+
+4. Set up your `.env` file with correct database credentials.
+
+5. Run migrations:
+
+```bash
+php artisan migrate
+```
+
+6. Generate the admin user by visiting the following route in your browser:
+
+```
+http://localhost/demo-app/generate-admin
+```
+
+This will create a user with the following credentials:
+
+- **Email**: admin@admin.com  
+- **Password**: 12345678
+
+---
+
+## 📦 Features
+
+### ✅ User Authentication & Role-Based Access
+
+- User registration and login using Laravel's built-in authentication.
+- Roles: `admin`, `user` (with scope for `manager`, etc.)
+- Role-based access to features and routes.
+
+### ✅ Task Management
+
+- Task attributes: `title`, `description`, `priority`, `deadline`, `status`
+- CRUD operations for tasks:
+  - **Create**: Add tasks with title, description, priority, deadline, and assigned users.
+  - **Read**: View tasks created or assigned.
+  - **Update**: Modify task details.
+  - **Delete**: Remove tasks.
+
+### ✅ Document Upload
+
+- Attach and upload documents to tasks.
+- Download attachments from the task view.
+
+### ✅ Validation & Error Handling
+
+- Validates inputs (e.g., deadline must be today or later, not past the current year).
+- Graceful handling of unauthorized actions and missing resources.
+
+---
+
+## 📁 Folder Structure
+
+- `app/Models`: Contains the Eloquent models.
+- `app/Http/Controllers`: Contains application logic.
+- `routes/web.php`: Web routes.
+- `resources/views`: Blade templates for UI.
+
+---
+
+## 🛡️ Security
+
+- Passwords are hashed using Laravel's hashing system.
+- Access control enforced using middleware and role checks.
+
+---
+
+## 🧪 Testing
+
+Coming soon...
+
+---
+
+## 🧑‍💻 Author
+
+Developed by Rahul raghvendra.
+
+---
+
+## 📜 License
+
+This project is open-sourced under the MIT license.

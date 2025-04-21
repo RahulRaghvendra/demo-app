@@ -6,19 +6,19 @@
     </div>
     <div class="card">
       <div class="card-header">
-        <h5 class="card-title">{{ isset($designation) ? 'Edit User' : 'Designation Registration' }}</h5>
+        <h5 class="card-title">{{ $flag=='edit' ? 'Edit User' : 'Designation Registration' }}</h5>
       </div>
       <div class="card-body">
-        <form method="post" action="">
+        <form method="post" action="{{route('desig_store')}}">
           @csrf
           <input type="hidden" name="flag" value="{{ isset($designation) ? 'edit' : 'add' }}">
           <input type="hidden" name="id" value="{{ isset($designation) ? $designation->id : '' }}">
           <div class="row">
             <div class="col-md-4 mb-3">
               <label for="designation" class="form-label">Role</label>
-              <input type="text" class="form-control" id="designation" name="designation" placeholder="Enter Designation" aria-describedby="designationHelp" value="{{ old('designation', isset($designation) ? $designation->designation : '') }}">
+              <input type="text" class="form-control" id="designation" name="designation_name" placeholder="Enter Designation" aria-describedby="designationHelp" value="{{ old('designation', isset($designation) ? $designation->designation : '') }}">
             </div>
-            <div class="col-md-4 mb-3">
+            <div class="col-md-4 mb-3 d-none">
               <label for="designation" class="form-label">Type</label>
               <input type="text" class="form-control" id="type" name="type" placeholder="Enter Type e.g management" aria-describedby="designationHelp" value="{{ old('designation', isset($designation) ? $designation->type : '') }}">
             </div>
@@ -31,7 +31,7 @@
               </select>
             </div>
             <!--permissions--->
-        
+            <h4>Permissions</h4>
                     @php($menus = __('menu.menu'))
                     @php($submenu = __('menu.submenu'))
                     @foreach ($menus as $key => $value)
@@ -49,7 +49,7 @@
   
             <!--permissions--->
           </div>
-          <button type="submit" class="btn btn-primary">{{ isset($designation) ? 'Update' : 'Register' }}</button>
+          <button type="submit" class="btn btn-primary">{{ $flag=='edit' ? 'Update' : 'Register' }}</button>
         </form>
       </div>
     </div>
